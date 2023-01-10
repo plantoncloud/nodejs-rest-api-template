@@ -1,4 +1,11 @@
 .PHONY: build
 build:
 	npm install
-	npm run build
+
+.PHONY: build-image
+build-image:
+	docker build --platform linux/amd64 -t nodejs-todo-api .
+
+.PHONY: run
+run:
+	npm start
