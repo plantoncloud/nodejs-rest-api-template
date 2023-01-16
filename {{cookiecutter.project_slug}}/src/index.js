@@ -1,6 +1,37 @@
 const express = require('express');
 const app = express();
-const port = 3000;
+const port = 8080;
+
+// this is for demo purposes. remove it when using for production use.
+default_routes = [
+    {
+        description: 'get all todos',
+        method: 'GET',
+        path: '/todos'
+    },
+    {
+        description: 'get details of a todo',
+        method: 'GET',
+        path: '/todos/<int:todo_id>'
+    },
+    {
+        description: 'create a new todo',
+        method: 'POST',
+        path: '/todos'
+    }
+    ,
+    {
+        description: 'update a todo',
+        method: 'PUT',
+        path: '/todos/<int:todo_id>'
+    }
+    ,
+    {
+        description: 'delete a todo',
+        method: 'DELETE',
+        path: '/todos/<int:todo_id>'
+    }
+]
 
 // This is an in-memory store for the purposes of this example.
 // You would typically use a database like MongoDB or MySQL in a real app.
@@ -16,6 +47,11 @@ const todos = [
     completed: false
   }
 ];
+
+// Returns all default routes
+app.get('/', (req, res) => {
+  res.send(default_routes);
+});
 
 // Returns all todos
 app.get('/todos', (req, res) => {

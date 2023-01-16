@@ -10,7 +10,7 @@ build: deps
 	cp package.json build/
 
 .PHONY: run
-run:
+run: build
 	npm start
 
 .PHONY: build-image
